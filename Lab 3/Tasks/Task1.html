@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COMSATS Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #003366;
+        }
+        form {
+            width: 80%;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .section-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #003366;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>COMSATS University Islamabad Job Application Form</h1>
+
+    <form>
+
+        <div class="section-box">
+            <label for="position">Position Applied For:</label>
+            <input type="text" name="position" id="position" placeholder="Enter the job title">
+
+            <label for="department">Department:</label>
+            <input type="text" name="department" id="department" placeholder="Enter department name">
+
+            <label for="campus">Campus:</label>
+            <select name="campus" id="campus">
+                <option value="Islamabad">Islamabad</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Wah">Wah</option>
+                <option value="Sahiwal">Sahiwal</option>
+                <option value="Vehari">Vehari</option>
+                <option value="Attock">Attock</option>
+                <option value="Virtual">Virtual</option>
+            </select>
+        </div>
+
+        <div class="section-box">
+            <label for="fullname">Full Name (Use CAPITAL LETTERS):</label>
+            <input type="text" name="fullname" id="fullname" required>
+
+            <label for="fathername">Father’s / Guardian’s Name:</label>
+            <input type="text" name="fathername" id="fathername">
+
+            <label for="nic">CNIC #:</label>
+            <input type="text" name="nic" id="nic" placeholder="e.g. 12345-1234567-1">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" id="dob">
+        </div>
+
+        <div class="section-box">
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="Male" id="male"> <label for="male" style="display:inline;">Male</label>
+            <input type="radio" name="gender" value="Female" id="female"> <label for="female" style="display:inline;">Female</label>
+        </div>
+
+        <div class="section-box">
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email">
+
+            <label for="phone">Phone / Mobile:</label>
+            <input type="text" name="phone" id="phone" placeholder="Enter contact number">
+
+            <label for="address">Correspondence Address:</label>
+            <input type="text" name="address" id="address" placeholder="City / Street / ZIP">
+        </div>
+
+        <div class="section-box">
+            <label for="qualification">Academic Qualification:</label>
+            <input type="text" name="qualification" id="qualification" placeholder="Highest degree and institution">
+
+            <label for="experience">Employment / Experience:</label>
+            <input type="text" name="experience" id="experience" placeholder="List previous jobs and experience">
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Application</button>
+
+    </form>
+
+</body>
+</html>
