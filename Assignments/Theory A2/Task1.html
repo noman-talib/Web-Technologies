@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Enter a Number</h3>
+
+<input type="number" id="num">
+<button onclick="showNumber()">Try it</button>
+
+<p id="result"></p>
+
+<script>
+function showNumber() {
+  var number = document.getElementById("num").value;
+  document.getElementById("result").innerHTML = number;
+}
+</script>
+
+</body>
+</html>

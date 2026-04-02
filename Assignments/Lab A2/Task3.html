@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Repeat Message</h3>
+
+<button onclick="showMessage()">Try it</button>
+
+<p id="result"></p>
+
+<script>
+function showMessage() {
+  var num = Number(prompt("Enter number of times:"));
+  var msg = prompt("Enter your message:");
+  
+  var output = "";
+
+  for (var i = 1; i <= num; i++) {
+    output += msg + "<br>";
+  }
+
+  document.getElementById("result").innerHTML = output;
+}
+</script>
+
+</body>
+</html>

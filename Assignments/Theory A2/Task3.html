@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Scientific Notation Example</h3>
+
+<button onclick="showNumbers()">Try it</button>
+
+<p id="result"></p>
+
+<script>
+function showNumbers() {
+  var big = 123e5;   
+  var small = 123e-5; 
+  
+  document.getElementById("result").innerHTML =
+    "123e5 = " + big + "<br>" +
+    "123e-5 = " + small;
+}
+</script>
+
+</body>
+</html>

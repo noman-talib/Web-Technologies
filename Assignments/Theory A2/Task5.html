@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Number Guessing Game</h3>
+
+<p>Enter a number between 1 and 10:</p>
+
+<input type="number" id="userNum">
+<button onclick="playGame()">Try it</button>
+
+<p id="result"></p>
+
+<script>
+function playGame() {
+  var randomNum = Math.floor(Math.random() * 10) + 1; 
+  var userNum = document.getElementById("userNum").value;
+
+  if (userNum == randomNum) {
+    alert("You won!");
+  } else {
+    document.getElementById("result").innerHTML =
+      "You lost! The number was " + randomNum;
+  }
+}
+</script>
+
+</body>
+</html>

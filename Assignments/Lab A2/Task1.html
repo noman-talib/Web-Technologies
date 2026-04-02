@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Sum of Numbers (Enter 0 to Stop)</h3>
+
+<button onclick="calculateSum()">Start</button>
+
+<script>
+function calculateSum() {
+  var sum = 0;
+  var num;
+
+  while (true) {
+    num = Number(prompt("Enter a number (0 to stop):"));
+    
+    if (num === 0) {
+      break;
+    }
+    
+    sum += num;
+  }
+
+  alert("Total sum is: " + sum);
+}
+</script>
+
+</body>
+</html>
