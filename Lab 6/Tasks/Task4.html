@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup Form Validation</title>
+</head>
+<body>
+
+<h2>Signup Form</h2>
+
+<form onsubmit="return validateForm()">
+  Name: <input type="text" id="name"><br><br>
+  Email: <input type="text" id="email"><br><br>
+  Password: <input type="password" id="password"><br><br>
+  Confirm Password: <input type="password" id="confirmPassword"><br><br>
+  
+  <input type="submit" value="Sign Up">
+</form>
+
+<p id="error" style="color:red;"></p>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var password = document.getElementById("password").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+  var error = "";
+
+  // Name validation
+  if (name === "") {
+    error = "Name is required";
+  }
+
+  // Email validation
+  else if (email === "") {
+    error = "Email is required";
+  } 
+  else if (!email.includes("@") || !email.includes(".")) {
+    error = "Enter a valid email";
+  }
+
+  // Password validation
+  else if (password.length < 6) {
+    error = "Password must be at least 6 characters";
+  }
+
+  // Confirm password
+  else if (password !== confirmPassword) {
+    error = "Passwords do not match";
+  }
+
+  // Show error
+  if (error !== "") {
+    document.getElementById("error").innerHTML = error;
+    return false; // stop form submission
+  }
+
+  alert("Signup successful!");
+  return true;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum Until Zero</title>
+</head>
+<body>
+
+<script>
+let sum = 0;
+let num;
+
+while (true) {
+    num = parseInt(prompt("Enter a number (0 to stop):"));
+
+    if (num === 0) {
+        break; // stop loop when user enters 0
+    }
+
+    sum += num;
+}
+
+alert("Total sum is: " + sum);
+</script>
+
+</body>
+</html>

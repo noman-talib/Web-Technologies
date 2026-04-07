@@ -1,0 +1,75 @@
+/* General Styling */
+body {
+  background-color: lightblue;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Heading */
+h1 {
+  color: navy;
+  margin-left: 20px;
+  font-family: Verdana;
+  font-size: 50px;
+}
+
+/* ID */
+#para1 {
+  text-align: center;
+  color: red;
+}
+
+/* Class */
+.center {
+  text-align: center;
+  color: yellow;
+}
+
+/* Div Boxes */
+.box {
+  width: 100px;
+  padding: 10px;
+  color: white;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.red {
+  background-color: red;
+}
+
+/* Form Styling */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.cancelbtn {
+  background-color: #f44336;
+}
+
+.container {
+  padding: 16px;
+}
