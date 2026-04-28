@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Form - Email Validation</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .valid {
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+
+    <script>
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("msg");
+
+            // Simple email regex
+            let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email.length === 0) {
+                message.innerHTML = "Email cannot be empty!";
+                message.className = "error";
+                return;
+            }
+
+            if (!pattern.test(email)) {
+                message.innerHTML = "Invalid email format! Example: user@example.com";
+                message.className = "error";
+                return;
+            }
+
+            message.innerHTML = "Valid email ✔";
+            message.className = "valid";
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Signup Form</h2>
+
+    <form>
+        <label>Email:</label>
+        <input type="text" id="email" oninput="validateEmail()">
+        <br><br>
+        <span id="msg"></span>
+        <br><br>
+        <input type="submit" value="Signup">
+    </form>
+
+</body>
+</html>

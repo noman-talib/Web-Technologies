@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Form - Password Validation</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .valid {
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+
+    <script>
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            let message = document.getElementById("msg");
+
+            // Regex checks
+            let hasUpper = /[A-Z]/;
+            let hasLower = /[a-z]/;
+            let hasDigit = /[0-9]/;
+            let hasSpecial = /[!@#$%^&*(),.?":{}|<>]/; // ASCII special chars
+
+            let errors = [];
+
+            if (password.length === 0) {
+                message.innerHTML = "Password cannot be empty!";
+                message.className = "error";
+                return;
+            }
+
+            if (!hasUpper.test(password)) {
+                errors.push("At least 1 uppercase letter required");
+            }
+
+            if (!hasLower.test(password)) {
+                errors.push("At least 1 lowercase letter required");
+            }
+
+            if (!hasDigit.test(password)) {
+                errors.push("At least 1 digit required");
+            }
+
+            if (!hasSpecial.test(password)) {
+                errors.push("At least 1 special (ASCII) character required");
+            }
+
+            if (errors.length > 0) {
+                message.innerHTML = errors.join("<br>");
+                message.className = "error";
+            } else {
+                message.innerHTML = "Strong password ✔";
+                message.className = "valid";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Signup Form</h2>
+
+    <form>
+        <label>Password:</label>
+        <input type="password" id="password" oninput="validatePassword()">
+        <br><br>
+        <span id="msg"></span>
+        <br><br>
+        <input type="submit" value="Signup">
+    </form>
+
+</body>
+</html>

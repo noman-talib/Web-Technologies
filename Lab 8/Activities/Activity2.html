@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Flags Demo</title>
+    <script>
+        function runRegex() {
+            let text = document.getElementById("inputText").value;
+
+            // Pattern: same structure as before
+            let patternGlobal = /[1-4][A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}/g;
+            let patternInsensitive = /[1-4][A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}/i;
+            let patternMultiline = /^[1-4][A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}/gm;
+
+            // GLOBAL (g) → find all matches
+            let globalMatches = text.match(patternGlobal);
+
+            // CASE-INSENSITIVE (i) → allows lowercase too
+            let insensitiveMatch = text.match(patternInsensitive);
+
+            // MULTILINE (m) → match at start of each line
+            let multilineMatches = text.match(patternMultiline);
+
+            // Display results
+            alert(
+                "GLOBAL (g) matches:\n" + (globalMatches || "No matches") +
+                "\n\nCASE-INSENSITIVE (i) match:\n" + (insensitiveMatch || "No match") +
+                "\n\nMULTILINE (m) matches:\n" + (multilineMatches || "No matches")
+            );
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Regex Character Recognition Demo</h2>
+
+    <textarea id="inputText" rows="6" cols="40" placeholder="Enter multiple lines here..."></textarea>
+    <br><br>
+    <button onclick="runRegex()">Run Regex</button>
+
+</body>
+</html>
