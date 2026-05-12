@@ -1,0 +1,135 @@
+<?php
+// Handle AJAX request
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = trim($_POST['name']);
+    $price = trim($_POST['price']);
+    $description = trim($_POST['description']);
+
+    // Server-side validation
+    if (empty($name) || empty($description)) {
+        echo "All fields are required.";
+        exit;
+    }
+
+    if (!is_numeric($price) || $price <= 0) {
+        echo "Price must be a positive number.";
+        exit;
+    }
+
+    // Success message
+    echo "Product uploaded successfully!";
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Upload Form</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        form {
+            width: 350px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Upload Product Details</h2>
+
+<form id="productForm">
+
+    <label>Product Name</label>
+    <input type="text" id="name" name="name">
+
+    <label>Price</label>
+    <input type="number" id="price" name="price">
+
+    <label>Description</label>
+    <textarea id="description" name="description"></textarea>
+
+    <button type="submit">Submit</button>
+
+    <div id="message"></div>
+
+</form>
+
+<script>
+$(document).ready(function () {
+
+    $("#productForm").submit(function (e) {
+        e.preventDefault();
+
+        let name = $("#name").val().trim();
+        let price = $("#price").val().trim();
+        let description = $("#description").val().trim();
+
+        // jQuery Validation
+        if (name === "") {
+            $("#message").css("color", "red").text("Product name is required.");
+            return;
+        }
+
+        if (price === "" || isNaN(price) || Number(price) <= 0) {
+            $("#message").css("color", "red").text("Price must be a positive number.");
+            return;
+        }
+
+        if (description === "") {
+            $("#message").css("color", "red").text("Description is required.");
+            return;
+        }
+
+        // AJAX Request
+        $.ajax({
+            url: "",
+            type: "POST",
+            data: {
+                name: name,
+                price: price,
+                description: description
+            },
+
+            success: function (response) {
+                $("#message").css("color", "green").text(response);
+                $("#productForm")[0].reset();
+            },
+
+            error: function () {
+                $("#message").css("color", "red").text("Something went wrong.");
+            }
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX Example</title>
+    <script src="https://code.jquery.com/jquery3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button id="fetchUsers">Fetch Users</button>
+    <table border="1" id="userTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function () {
+            $('#fetchUsers').click(function () {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/users',
+                    method: 'GET',
+                    success: function (data) {
+                        data.forEach(user => {
+
+                            $('#userTable').append(`<tr><td>${user.name}</td><td>${user.email}<
+/td></tr>`);
+                        });
+                    },
+                    error: function () {
+                        alert('Error fetching users.');
+                    }
+                });
+            });
+        });
+    </script>

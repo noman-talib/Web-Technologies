@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+        }
+
+        .weather-box {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Weather Application</h2>
+
+<input type="text" id="city" placeholder="Enter city name">
+<button id="getWeather">Get Weather</button>
+
+<div id="weatherResult"></div>
+
+<script>
+
+$("#getWeather").click(function () {
+
+    let city = $("#city").val().trim();
+
+    if(city === "") {
+        $("#weatherResult").html(
+            "<p style='color:red;'>Please enter city name.</p>"
+        );
+        return;
+    }
+
+    // Your WeatherAPI Key
+    let apiKey = "ebeb70226626484599b53935261205";
+
+    // WeatherAPI URL
+    let url =
+    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+
+    $.ajax({
+
+        url: url,
+        type: "GET",
+
+        success: function(data) {
+
+            let temp = data.current.temp_c;
+            let description = data.current.condition.text;
+
+            $("#weatherResult").html(`
+                <div class="weather-box">
+                    <h3>${data.location.name}</h3>
+                    <p><strong>Temperature:</strong> ${temp} °C</p>
+                    <p><strong>Weather:</strong> ${description}</p>
+                </div>
+            `);
+
+        },
+
+        error: function() {
+
+            $("#weatherResult").html(
+                "<p style='color:red;'>City not found or API error.</p>"
+            );
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
