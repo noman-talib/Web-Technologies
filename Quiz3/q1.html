@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <h1>Student Registration</h1>
+    <form id="registrationForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <span id="nameError" style="color: red; display: none;">Name cannot be empty</span>
+        </div>
+        <br>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <span id="emailError" style="color: red; display: none;">Email must contain "@"</span>
+        </div>
+        <br>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <span id="passwordError" style="color: red; display: none;">Password must be at least 8 characters</span>
+        </div>
+        <br>
+
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
+            <span id="confirmPasswordError" style="color: red; display: none;">Passwords do not match</span>
+        </div>
+        <br>
+
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age">
+            <span id="ageError" style="color: red; display: none;">Age must be greater than 18</span>
+        </div>
+        <br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const inputs = form.querySelectorAll('input');
+
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                const errorId = this.id + 'Error';
+                const error = document.getElementById(errorId);
+                if(error) error.style.display = 'none';
+            });
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if(validateForm()) {
+                alert('Registration successful!');
+                form.reset();
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const age = document.getElementById('age').value;
+
+            if(name === '') {
+                showError('nameError');
+                isValid = false;
+            }
+
+            if(!email.includes('@')) {
+                showError('emailError');
+                isValid = false;
+            }
+
+            if(password.length < 8) {
+                showError('passwordError');
+                isValid = false;
+            }
+
+            if(password !== confirmPassword) {
+                showError('confirmPasswordError');
+                isValid = false;
+            }
+
+            if(age === '' || parseInt(age) <= 18) {
+                showError('ageError');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function showError(errorId) {
+            document.getElementById(errorId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
